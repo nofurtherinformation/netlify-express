@@ -44,14 +44,16 @@ router.get('/', (req, res) => {
 });
 
 router.get('/api', async (req, res) => {
-  const testFolder = './';
+  const testFolder = '';
   var result = []
+
+  result.push('test');
   fs.readdir(testFolder, (err, files) => {
     files.forEach(file => {
       result.push(file);
+      result.push('test');
     });
   });
-  // var filebuffer = fs.readFileSync('../../usaFactsCovid.db');
   res.json({ result })
 });
 
@@ -64,7 +66,7 @@ app.use('/', (req, res) => res.sendFile(path.join(__dirname, '../index.html')));
 router.get('/v1/lisa/', async (req, res) => {
   // destructure parameters from URL query
   const {state,category,start,end,source,type,level} = req.query
-  
+  var filebuffer = fs.readFileSync('usaFactsCovid.db');
   initSqlJs().then(function(SQL){
     // Load the db
     var db = new SQL.Database(filebuffer);
