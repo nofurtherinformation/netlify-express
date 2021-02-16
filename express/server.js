@@ -6,7 +6,6 @@ const app = express();
 const bodyParser = require('body-parser');
 const initSqlJs = require('sql.js');
 var fs = require('fs');
-var filebuffer = fs.readFileSync('../../usaFactsCovid.db');
 
 // get date range helper
 function getDateRange(start, end) {
@@ -45,7 +44,15 @@ router.get('/', (req, res) => {
 });
 
 router.get('/api', async (req, res) => {
-  res.json({ test: 'test' })
+  const testFolder = './';
+  result = []
+  fs.readdir(testFolder, (err, files) => {
+    files.forEach(file => {
+      result.push(file);
+    });
+  });
+  // var filebuffer = fs.readFileSync('../../usaFactsCovid.db');
+  res.json({ result })
 });
 
 router.post('/', (req, res) => res.json({ postBody: req.body }));
