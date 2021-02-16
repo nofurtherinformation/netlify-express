@@ -55,15 +55,13 @@ db.query = function (sql, params) {
 };
 
 const router = express.Router();
-
-router.get('/', async (req, res) => {
-  var sql = `SELECT * FROM cases LIMIT 5`;
-  var result = await db.query(sql, []);
-  res.json({
-          "message":"success",
-          "data": result.rows
-  });
+router.get('/', (req, res) => {
+  res.writeHead(200, { 'Content-Type': 'text/html' });
+  res.write('<h1>Hello from Express.js!</h1>');
+  res.end();
 });
+router.get('/another', (req, res) => res.json({ route: req.originalUrl }));
+router.post('/', (req, res) => res.json({ postBody: req.body }));
 
 router.get('/v1/lisa/', async (req, res) => {
   // destructure parameters from URL query
