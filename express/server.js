@@ -6,7 +6,7 @@ const app = express();
 const bodyParser = require('body-parser');
 const initSqlJs = require('sql.js');
 var fs = require('fs');
-var filebuffer = fs.readFileSync('./usaFactsCovid.db');
+var filebuffer = fs.readFileSync('../usaFactsCovid.db');
 
 // get date range helper
 function getDateRange(start, end) {
