@@ -45,7 +45,7 @@ router.get('/', (req, res) => {
 
 router.get('/api', async (req, res) => {
   const testFolder = './';
-  result = []
+  var result = []
   fs.readdir(testFolder, (err, files) => {
     files.forEach(file => {
       result.push(file);
