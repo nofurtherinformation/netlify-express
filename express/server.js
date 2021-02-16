@@ -8,18 +8,18 @@ const jsgeoda = require('jsgeoda');
 const sqlite3 = require("sqlite3").verbose();
 
 // get date range helper
-function getDateRange(start, end) {
-  const startString = `${start-100}`;
-  const endString = `${end-100}`;
-  const currDate = new Date(startString.slice(0,4), startString.slice(4,6), startString.slice(6,8));
-  const endDate = new Date(endString.slice(0,4), endString.slice(4,6), endString.slice(6,8));
-  var dateArray = [];
-  while (currDate < endDate) {
-    dateArray.push(currDate.toISOString().slice(0,10));
-    currDate.setDate(currDate.getDate() + 1);
-  }
-  return dateArray.join('","')
-}
+// function getDateRange(start, end) {
+//   const startString = `${start-100}`;
+//   const endString = `${end-100}`;
+//   const currDate = new Date(startString.slice(0,4), startString.slice(4,6), startString.slice(6,8));
+//   const endDate = new Date(endString.slice(0,4), endString.slice(4,6), endString.slice(6,8));
+//   var dateArray = [];
+//   while (currDate < endDate) {
+//     dateArray.push(currDate.toISOString().slice(0,10));
+//     currDate.setDate(currDate.getDate() + 1);
+//   }
+//   return dateArray.join('","')
+// }
 // // connect to db
 // const db = new sqlite3.Database('./usaFactsCovid.db', err => {
 //   if (err) {
@@ -28,20 +28,20 @@ function getDateRange(start, end) {
 //   console.log("Successful connection to the database");
 // });
 
-const tableTree = {
-  "confirmed": {
-    "usafacts":{
-      "county":"cases",
-      "state":"usaFactsCasesCounty"
-    }
-  },
-  "deaths": {
-    "usafacts":{
-      "county":"deaths",
-      "state":"usaFactsCasesCounty"
-    }
-  }
-}
+// const tableTree = {
+//   "confirmed": {
+//     "usafacts":{
+//       "county":"cases",
+//       "state":"usaFactsCasesCounty"
+//     }
+//   },
+//   "deaths": {
+//     "usafacts":{
+//       "county":"deaths",
+//       "state":"usaFactsCasesCounty"
+//     }
+//   }
+// }
 
 // // make sqlite function like postgres
 // db.query = function (sql, params) {
