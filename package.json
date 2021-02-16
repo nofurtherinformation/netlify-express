@@ -29,6 +29,7 @@
     "nodemon": "^1.19.2",
     "serverless-http": "^2.3.0",
     "jsgeoda": "^0.1.8",
-    "sqlite3": "^5.0.2"
+    "sqlite3": "^5.0.2",
+    "aws-sdk": "^2.844.0"
   }
 }

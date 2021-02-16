@@ -56,12 +56,8 @@ db.query = function (sql, params) {
 
 const router = express.Router();
 router.get('/', (req, res) => {
-  res.writeHead(200, { 'Content-Type': 'text/html' });
-  res.write('<h1>Hello from Express.js!</h1>');
-  res.end();
+  res.json({'response':"Hello World!"})
 });
-router.get('/another', (req, res) => res.json({ route: req.originalUrl }));
-router.post('/', (req, res) => res.json({ postBody: req.body }));
 
 router.get('/v1/lisa/', async (req, res) => {
   // destructure parameters from URL query
