@@ -20,13 +20,13 @@ function getDateRange(start, end) {
   }
   return dateArray.join('","')
 }
-// connect to db
-const db = new sqlite3.Database('./usaFactsCovid.db', err => {
-  if (err) {
-    return console.error(err.message);
-  }
-  console.log("Successful connection to the database");
-});
+// // connect to db
+// const db = new sqlite3.Database('./usaFactsCovid.db', err => {
+//   if (err) {
+//     return console.error(err.message);
+//   }
+//   console.log("Successful connection to the database");
+// });
 
 const tableTree = {
   "confirmed": {
@@ -43,18 +43,18 @@ const tableTree = {
   }
 }
 
-// make sqlite function like postgres
-db.query = function (sql, params) {
-  var that = this;
-  return new Promise(function (resolve, reject) {
-      that.all(sql, params, function (error, rows) {
-      if (error)
-          reject(error);
-      else
-          resolve({ rows: rows });
-      });
-  });
-};
+// // make sqlite function like postgres
+// db.query = function (sql, params) {
+//   var that = this;
+//   return new Promise(function (resolve, reject) {
+//       that.all(sql, params, function (error, rows) {
+//       if (error)
+//           reject(error);
+//       else
+//           resolve({ rows: rows });
+//       });
+//   });
+// };
 
 const router = express.Router();
 router.get('/', (req, res) => {
@@ -62,7 +62,11 @@ router.get('/', (req, res) => {
   res.write('<h1>Hello from Express.js!</h1>');
   res.end();
 });
-router.get('/another', (req, res) => res.json({ route: req.originalUrl }));
+
+router.get('/api', async (req, res) => {
+  res.json({ test: 'test' })
+});
+
 router.post('/', (req, res) => res.json({ postBody: req.body }));
 
 app.use(bodyParser.json());
